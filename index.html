@@ -9,18 +9,18 @@
 <script>document.documentElement.className+=" js"</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
- --plaster:#efe9df;--paper:#f7f3ec;--card:#fffdf9;--ink:#1d1c1a;--ink2:#2a2825;--soft:#5f5a52;--line:#ddd5c7;
- --c:#7f95a6;--c-soft:color-mix(in oklab,var(--c) 22%,var(--paper));--c-lite:color-mix(in oklab,var(--c) 62%,white);
- --serif:"Fraunces",Georgia,serif;--sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
- --ease:cubic-bezier(.2,.7,.2,1);--wrap:1240px;
+ --white:#fff;--bg:#f6f5f2;--ink:#141414;--soft:#5b5b5b;--line:#e2e0da;
+ --c:#8fa58a;--on:#141414;--c2:color-mix(in oklab,var(--c) 55%,white);--c3:color-mix(in oklab,var(--c) 22%,white);--c4:color-mix(in oklab,var(--c) 72%,black);
+ --disp:"Unbounded",system-ui,sans-serif;--sans:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+ --ease:cubic-bezier(.2,.7,.2,1);--wrap:1280px;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit}
@@ -28,183 +28,174 @@ button{font:inherit;color:inherit}
 .wrap{width:min(100% - 40px,var(--wrap));margin-inline:auto}
 .skip{position:absolute;left:-999px;top:0;z-index:99;background:var(--ink);color:#fff;padding:8px 16px}
 .skip:focus{left:16px;top:16px}
-h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.04;letter-spacing:-.02em;margin:0;font-variation-settings:"opsz" 144}
-.eyebrow{display:flex;align-items:center;gap:12px;font-size:.76rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin:0 0 20px}
-.eyebrow::before{content:"";width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 3px var(--paper),0 0 0 1px var(--line);transition:background .6s}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:999px;border:1.5px solid transparent;font-weight:700;font-size:.98rem;text-decoration:none;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s var(--ease)}
+h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.02;letter-spacing:-.03em;margin:0}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 18px}
+.tag::before{content:"";width:14px;height:14px;border-radius:3px;background:var(--c);transition:background .6s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:12px;border:2px solid transparent;font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s var(--ease)}
 .btn:active{transform:scale(.97)}
-.btn-k{background:var(--ink);color:var(--paper)}.btn-k:hover{background:#000}
-.btn-l{border-color:var(--ink);color:var(--ink)}.btn-l:hover{background:var(--ink);color:var(--paper)}
-.btn-w{border-color:rgba(247,243,236,.5);color:var(--paper)}.btn-w:hover{background:var(--paper);color:var(--ink)}
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0)*90ms)}
+.btn-k{background:var(--ink);color:#fff}.btn-k:hover{background:#000}
+.btn-l{border-color:currentColor}.btn-l:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-w{background:#fff;color:var(--ink)}.btn-w:hover{background:var(--c3)}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--d,0)*80ms)}
 .js .rv.in{opacity:1;transform:none}
-
-.concept{background:var(--ink);color:#cfc9bf;font-size:.8rem;text-align:center;padding:7px 16px}
+.concept{background:var(--ink);color:#cfcfcf;font-size:.8rem;text-align:center;padding:7px 16px}
 .concept a{color:#fff;font-weight:600}
 
 /* header */
-.hdr{position:sticky;top:0;z-index:50;background:rgba(247,243,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.hdr .wrap{display:flex;align-items:center;gap:26px;min-height:76px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-height:48px}
-.brand .sw{width:14px;height:40px;border-radius:3px;background:linear-gradient(var(--c) 0 33%,var(--c-lite) 33% 66%,var(--c-soft) 66%);transition:background .6s}
-.brand b{font-family:var(--serif);font-weight:500;font-size:1.45rem;letter-spacing:-.02em;line-height:1}
-.brand small{display:block;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-top:4px}
-.nav{display:flex;gap:26px}
-.nav a{text-decoration:none;font-weight:600;font-size:.95rem;padding:12px 0;background:linear-gradient(var(--c),var(--c)) 0 100%/0 2px no-repeat;transition:background-size .3s var(--ease)}
-.nav a:hover{background-size:100% 2px}
-.lang{display:inline-grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--line);border-radius:999px;padding:3px;background:var(--card)}
-.lang button{min-height:40px;min-width:44px;padding:0 12px;border-radius:999px;border:0;background:none;font-weight:800;font-size:.8rem;letter-spacing:.06em;cursor:pointer}
-.lang button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-.hdr .btn{min-height:46px;padding:0 20px;font-size:.9rem}
-.menu{display:none;min-height:46px;min-width:48px;border-radius:999px;border:1.5px solid var(--ink);background:none;font-weight:700;padding:0 16px;cursor:pointer}
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:24px;min-height:74px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;min-height:48px}
+.brand .dot{width:34px;height:34px;border-radius:8px;background:var(--c);transition:background .6s;position:relative;overflow:hidden}
+.brand .dot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40%;background:var(--c4);transition:background .6s}
+.brand b{font-family:var(--disp);font-weight:800;font-size:1.05rem;letter-spacing:-.02em;white-space:nowrap}
+.nav{display:flex;gap:24px}
+.nav a{white-space:nowrap;text-decoration:none;font-weight:600;padding:12px 0;transition:color .2s}
+.nav a:hover{color:var(--c4)}
+.lang{display:inline-grid;grid-template-columns:1fr 1fr;border:2px solid var(--ink);border-radius:10px;overflow:hidden}
+.lang button{min-height:40px;min-width:46px;border:0;background:none;font-weight:700;font-size:.82rem;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--ink);color:#fff}
+.hdr .btn{min-height:46px;padding:0 20px;font-size:.92rem;white-space:nowrap}
+.menu{display:none;min-height:46px;min-width:48px;border-radius:10px;border:2px solid var(--ink);background:none;font-weight:700;padding:0 14px;cursor:pointer}
 @media(max-width:1060px){.hdr .btn{display:none}}
 @media(max-width:900px){
- .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);flex-direction:column;gap:0;padding:6px 20px 18px;border-bottom:1px solid var(--line)}
- .nav.open{display:flex}.nav a{padding:16px 0;border-bottom:1px solid var(--line);background:none}
+ .nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;gap:0;padding:6px 20px 18px;border-bottom:1px solid var(--line)}
+ .nav.open{display:flex}.nav a{padding:16px 0;border-bottom:1px solid var(--line)}
  .menu{display:inline-flex;align-items:center}
 }
-@media(max-width:420px){.brand small{display:none}.brand b{font-size:1.2rem}.hdr .wrap{gap:10px}.menu{padding:0 12px}.lang button{padding:0 10px}}
+@media(max-width:420px){.brand b{font-size:.92rem}.hdr .wrap{gap:10px}}
 
-/* hero */
-.hero{overflow-x:clip;padding:56px 0 64px;background:linear-gradient(var(--plaster),var(--paper))}
-.hero-g{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:56px;align-items:center}
-.hero h1{font-size:clamp(2.7rem,5.4vw,5rem);font-weight:350}
-.hero h1 .l{display:block;overflow:hidden;padding-bottom:.08em}
+/* hero: the page is the paint */
+.hero{position:relative;background:var(--prev,var(--c));color:var(--on);overflow:hidden;transition:color .6s}
+.hero .coat{position:absolute;inset:0;background:var(--c);transform-origin:0 50%;transform:scaleX(1)}
+.hero .coat.roll{animation:roll 1s cubic-bezier(.6,.05,.3,1)}
+@keyframes roll{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero .coat::after{content:"";position:absolute;top:0;bottom:0;right:0;width:10px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.08))}
+.hg{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;padding:64px 0 120px}
+.hero h1{font-size:clamp(2.6rem,5.4vw,5.2rem);font-weight:800;letter-spacing:-.045em}
+.hero h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
 .hero h1 .l>span{display:block}
-.hero h1 em{font-style:normal;position:relative;white-space:nowrap}
-.hero h1 em svg{position:absolute;left:-2%;bottom:.02em;width:104%;height:.3em;overflow:visible;z-index:-1}
-.hero h1 em path{fill:none;stroke:var(--c);stroke-width:12;stroke-linecap:round;opacity:.55;stroke-dasharray:260;stroke-dashoffset:0;transition:stroke .6s}
 .js .hero h1 .l>span{transform:translateY(105%);transition:transform 1s var(--ease);transition-delay:calc(var(--i)*110ms + 150ms)}
 .js .hero.go h1 .l>span{transform:none}
-.js .hero h1 em path{stroke-dashoffset:260}
-.js .hero.go h1 em path{stroke-dashoffset:0;transition:stroke-dashoffset 1s var(--ease) 1.5s,stroke .6s}
-.hero h1 em{z-index:0;isolation:isolate}
-.hero .lead{font-size:1.15rem;color:var(--soft);max-width:31em;margin:26px 0 30px}
+.hero .lead{font-size:1.15rem;opacity:.85;max-width:30em;margin:24px 0 30px}
 .cta{display:flex;flex-wrap:wrap;gap:12px}
-.mini{display:flex;flex-wrap:wrap;gap:22px 34px;margin-top:38px;padding-top:24px;border-top:1px solid var(--line)}
-.mini b{display:block;font-family:var(--serif);font-weight:400;font-size:2rem;line-height:1}
-.mini span{font-size:.86rem;color:var(--soft)}
-/* studio */
-.studio{background:var(--card);border-radius:30px;padding:16px;box-shadow:0 40px 80px -50px rgba(40,30,20,.45),0 0 0 1px var(--line)}
-.room{position:relative;border-radius:20px;overflow:hidden;background:#e6e2da}
+.hero .btn-k{background:var(--on);color:var(--c)}
+.hero .btn-l{color:var(--on)}
+.hero .btn-l:hover{background:var(--on);color:var(--c);border-color:var(--on)}
+.room{position:relative;border-radius:22px;overflow:hidden;border:8px solid #fff;box-shadow:0 40px 70px -40px rgba(0,0,0,.45);background:#fff}
 .room svg{width:100%;height:auto}
-.room .tag{position:absolute;left:14px;top:14px;background:rgba(255,253,249,.92);border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:8px}
-.room .tag i{width:12px;height:12px;border-radius:50%;background:var(--c);transition:background .6s}
-.ctrl{display:grid;gap:14px;padding:18px 8px 6px}
-.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.lab{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
-.sws{display:flex;gap:8px;flex-wrap:wrap}
-.swb{width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;position:relative;background:var(--s);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:transform .3s var(--ease)}
-.swb:hover{transform:translateY(-3px)}
-.swb[aria-pressed=true]{box-shadow:0 0 0 3px var(--card),0 0 0 5px var(--ink)}
-.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;gap:2px}
-.seg button{min-height:40px;padding:0 14px;border-radius:999px;border:0;background:none;font-weight:700;font-size:.85rem;cursor:pointer}
-.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-.cname{font-family:var(--serif);font-size:1.4rem;line-height:1}
-.cname small{font-family:var(--sans);font-size:.8rem;color:var(--soft);margin-left:8px}
-.fine{font-size:.78rem;color:var(--soft);margin:0}
-@media(max-width:1000px){.hero-g{grid-template-columns:1fr;gap:40px}}
-@media(max-width:520px){.hero{padding:36px 0 48px}.studio{padding:10px;border-radius:22px}.room{border-radius:14px}.swb{width:40px;height:40px}.seg button{padding:0 10px;font-size:.8rem}}
+.room .nm{position:absolute;left:14px;bottom:14px;background:#fff;color:var(--ink);border-radius:10px;padding:8px 12px;font-weight:700;font-size:.85rem;display:flex;gap:8px;align-items:center}
+.room .nm i{width:14px;height:14px;border-radius:4px;background:var(--c)}
+/* fan deck */
+.deck{position:relative;margin-top:-84px;z-index:2;overflow-x:clip}
+.fan{display:flex;justify-content:center;align-items:flex-end;height:190px;padding:0 10px}
+.chip{position:relative;width:92px;height:180px;margin:0 -14px;border-radius:12px 12px 8px 8px;border:0;background:#fff;box-shadow:0 14px 30px -12px rgba(0,0,0,.35);cursor:pointer;transform-origin:50% 120%;transform:rotate(var(--r)) translateY(var(--y,0));transition:transform .45s var(--ease),box-shadow .3s;padding:8px 8px 34px;display:flex;flex-direction:column}
+.chip i{flex:1;border-radius:6px;background:var(--s)}
+.chip span{position:absolute;left:8px;right:8px;bottom:8px;font-size:.72rem;font-weight:700;text-align:left;line-height:1.1;color:var(--ink)}
+.chip:hover{--y:-14px;z-index:3}
+.chip[aria-pressed=true]{--y:-30px;z-index:4;box-shadow:0 22px 40px -14px rgba(0,0,0,.5)}
+.deck .fine{text-align:center;color:var(--soft);font-size:.82rem;margin:14px 0 0}
+.ctrls{display:flex;justify-content:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:10px;overflow:hidden}
+.seg button{min-height:42px;padding:0 14px;border:0;background:#fff;font-weight:700;font-size:.85rem;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.seg span{display:grid;place-items:center;padding:0 12px;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--bg)}
+@media(max-width:980px){.hg{grid-template-columns:1fr;gap:36px;padding:44px 0 110px}}
+@media(max-width:640px){.fan{padding:0}.chip{width:42px;height:120px;margin:0 -3px;padding:5px 5px 26px;transform:rotate(calc(var(--r)*.45)) translateY(var(--y,0))}.chip span{font-size:.58rem;left:5px;right:5px;bottom:6px}.fan{height:150px}.deck{margin-top:-70px}}
 
-section{padding:110px 0}
-@media(max-width:760px){section{padding:76px 0}}
-.head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:end;margin-bottom:52px}
-.head h2{font-size:clamp(2.3rem,4.8vw,4.2rem);font-weight:350}
-.head p{margin:0;color:var(--soft);font-size:1.1rem;max-width:32em}
-@media(max-width:860px){.head{grid-template-columns:1fr;gap:16px;margin-bottom:34px}}
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:56px}
+.facts div{background:var(--bg);border-radius:16px;padding:22px}
+.facts b{display:block;font-family:var(--disp);font-weight:800;font-size:2rem;letter-spacing:-.03em;line-height:1}
+.facts span{display:block;margin-top:8px;color:var(--soft);font-size:.92rem}
+@media(max-width:860px){.facts{grid-template-columns:1fr 1fr}}
 
-/* services */
-.svc-s{background:var(--ink);color:var(--paper)}
-.svc-s .eyebrow{color:#b8b1a5}.svc-s .eyebrow::before{box-shadow:inset 0 0 0 3px var(--ink),0 0 0 1px #4a463f}
-.svc-s .head p{color:#b8b1a5}
-.strips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.strip{background:var(--ink2);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;border:1px solid #3a3732;transition:transform .5s var(--ease)}
-.strip:hover{transform:translateY(-6px)}
-.chips{display:grid;grid-template-rows:repeat(4,64px)}
-.chips i{display:block;transition:background .6s}
-.chips i:nth-child(1){background:color-mix(in oklab,var(--c) 18%,white)}
-.chips i:nth-child(2){background:color-mix(in oklab,var(--c) 45%,white)}
-.chips i:nth-child(3){background:var(--c)}
-.chips i:nth-child(4){background:color-mix(in oklab,var(--c) 70%,black)}
-.strip .bd{padding:24px 24px 28px;display:flex;flex-direction:column;gap:10px;flex:1}
-.strip .n{font-size:.76rem;font-weight:800;letter-spacing:.16em;color:#8f887c}
-.strip h3{font-size:2rem;font-weight:350}
-.strip p{margin:0;color:#c9c2b6}
-@media(max-width:900px){.strips{grid-template-columns:1fr}.chips{grid-template-rows:none;grid-template-columns:repeat(4,1fr);height:56px}}
+section{padding:100px 0}
+@media(max-width:760px){section{padding:70px 0}}
+.head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:end;margin-bottom:44px}
+.head h2{font-size:clamp(2.1rem,4.4vw,3.8rem)}
+.head p{margin:0;color:var(--soft);font-size:1.08rem;max-width:32em}
+@media(max-width:860px){.head{grid-template-columns:1fr;gap:14px;margin-bottom:30px}}
 
-/* promises */
-.prom{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
-.prom li{display:grid;grid-template-columns:90px minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:baseline;padding:34px 0;border-bottom:1px solid var(--line)}
-.prom .n{font-family:var(--serif);font-size:1.1rem;color:var(--soft)}
-.prom h3{font-size:clamp(1.9rem,3.6vw,3.1rem);font-weight:350;position:relative;display:inline-block}
-.prom h3 span{background:linear-gradient(var(--c-soft),var(--c-soft)) 0 88%/0 .32em no-repeat;transition:background-size 1.1s var(--ease) .2s}
-.prom li.in h3 span{background-size:100% .32em}
-.prom p{margin:0;color:var(--soft)}
-@media(max-width:760px){.prom li{grid-template-columns:1fr;gap:6px;padding:26px 0}}
+/* services color blocks */
+.blocks{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
+.blk{border-radius:22px;padding:30px 28px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;transition:background .6s,color .6s,transform .4s var(--ease)}
+.blk:hover{transform:translateY(-6px)}
+.blk:nth-child(1){background:var(--c4);color:#fff}
+.blk:nth-child(2){background:var(--c2);color:var(--ink)}
+.blk:nth-child(3){background:var(--c3);color:var(--ink)}
+.blk .n{font-family:var(--disp);font-weight:800;font-size:.9rem;opacity:.7}
+.blk h3{font-size:clamp(1.7rem,2.6vw,2.4rem);margin:auto 0 12px}
+.blk p{margin:0;opacity:.85}
+@media(max-width:860px){.blocks{grid-template-columns:1fr}.blk{min-height:220px}}
 
-/* reputation */
-.rep{background:var(--c-soft);transition:background .6s}
-.rg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
-.score{font-family:var(--serif);font-weight:300;font-size:clamp(7rem,17vw,14rem);line-height:.8;letter-spacing:-.05em}
-.stars{display:flex;gap:6px;margin:24px 0 10px}
-.stars svg{width:26px;height:26px;fill:var(--ink)}
-.rep p.big{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:350;line-height:1.2;margin:0 0 26px}
-.rep .facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(29,28,26,.2);margin-bottom:28px}
-.rep .facts div{padding:18px 0;border-bottom:1px solid rgba(29,28,26,.2)}
-.rep .facts div:nth-child(odd){padding-right:16px}
-.rep .facts b{display:block;font-weight:800}
-.rep .facts span{font-size:.92rem;color:#4a463f}
-@media(max-width:860px){.rg{grid-template-columns:1fr;gap:28px}}
+/* promise */
+.prom{background:var(--bg)}
+.pg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:p}
+.pg div{background:#fff;border-radius:22px;padding:30px 28px;border:1px solid var(--line)}
+.pg div::before{counter-increment:p;content:counter(p);display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:var(--c);color:var(--on);font-family:var(--disp);font-weight:800;font-size:1.2rem;margin-bottom:22px;transition:background .6s,color .6s}
+.pg h3{font-size:1.5rem;margin-bottom:10px}
+.pg p{margin:0;color:var(--soft)}
+@media(max-width:860px){.pg{grid-template-columns:1fr}}
+
+/* reviews */
+.rv-g{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px;align-items:stretch}
+.score{background:var(--ink);color:#fff;border-radius:22px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+.score b{font-family:var(--disp);font-weight:800;font-size:clamp(6rem,12vw,9.5rem);letter-spacing:-.06em;line-height:.85;color:var(--c2);transition:color .6s}
+.score .st{font-size:1.5rem;letter-spacing:.18em;color:#fff;margin-top:14px}
+.score p{margin:12px 0 0;color:#cfcfcf}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.why div{background:var(--bg);border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;min-height:160px}
+.why b{font-family:var(--disp);font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.why span{color:var(--soft);font-size:.95rem}
+.why a{grid-column:1/-1}
+@media(max-width:860px){.rv-g{grid-template-columns:1fr}.score{min-height:0}}
 
 /* contact */
-.cg{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:24px;align-items:stretch}
-.form{background:var(--card);border-radius:28px;padding:30px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column}
+.cg{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:20px;align-items:stretch}
+.form{background:var(--bg);border-radius:22px;padding:30px;display:flex;flex-direction:column}
 .form form{display:flex;flex-direction:column;gap:18px;flex:1}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fld{display:grid;gap:6px;font-weight:700;font-size:.9rem}
-.fld input,.fld textarea{width:100%;min-height:52px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);padding:12px 14px;font:inherit;font-weight:400;font-size:1rem}
-.fld textarea{min-height:96px;resize:vertical;flex:1}
-.fld.grow{flex:1;grid-template-rows:auto 1fr}
-.fld input:focus,.fld textarea:focus{outline:3px solid var(--c-lite);border-color:var(--ink)}
-.err{color:#a3321c;font-size:.85rem;font-weight:600}
 .pick{display:flex;flex-wrap:wrap;gap:8px}
-.pick button{min-height:46px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);font-weight:600;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.pick button{min-height:46px;padding:0 16px;border-radius:10px;border:2px solid var(--line);background:#fff;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
 .pick button:hover{border-color:var(--ink)}
-.pick button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.tried{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--c-soft);transition:background .6s}
-.tried i{width:40px;height:40px;border-radius:50%;background:var(--c);flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);transition:background .6s}
-.tried b{display:block}
-.tried span{font-size:.88rem;color:var(--soft)}
+.pick button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tried{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:#fff}
+.tried i{width:44px;height:44px;border-radius:10px;background:var(--c);flex:none;transition:background .6s}
+.tried b{display:block}.tried span{font-size:.88rem;color:var(--soft)}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{display:grid;gap:6px;font-weight:600;font-size:.9rem}
+.fld input,.fld textarea{width:100%;min-height:52px;border-radius:10px;border:2px solid var(--line);background:#fff;padding:12px 14px;font:inherit;font-weight:400}
+.fld textarea{min-height:96px;resize:vertical;height:100%}
+.fld.grow{flex:1;grid-template-rows:auto 1fr}
+.fld input:focus,.fld textarea:focus{outline:3px solid var(--c2);border-color:var(--ink)}
+.err{color:#a3321c;font-size:.85rem;font-weight:600}
 .demo{font-size:.85rem;color:var(--soft);margin:0}
-.ok{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:20px 0}
-.ok h3{font-size:2.4rem;margin-bottom:10px}
-.det{background:var(--ink);color:var(--paper);border-radius:28px;padding:30px;display:flex;flex-direction:column}
-.det h3{font-size:2rem;font-weight:350;margin-bottom:12px}
+.ok{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.ok h3{font-size:2.2rem;margin-bottom:10px}
+.det{background:var(--c);color:var(--on);border-radius:22px;padding:30px;display:flex;flex-direction:column;transition:background .6s,color .6s}
+.det h3{font-size:1.5rem;margin-bottom:8px}
 .det dl{margin:0;flex:1;display:flex;flex-direction:column}
-.det dl div{padding:12px 0;border-top:1px solid #3a3732;flex:1;display:flex;flex-direction:column;justify-content:center}
-.det dt{font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#8f887c}
+.det dl div{flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 0;border-top:1.5px solid color-mix(in oklab,var(--on) 22%,transparent)}
+.det dt{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
 .det dd{margin:4px 0 0;font-weight:600}
-.det dd a{text-decoration:none;display:inline-flex;align-items:center;min-height:48px}
-.det .big{font-family:var(--serif);font-size:1.9rem;font-weight:400}
-.det .acts{padding-top:22px;border-top:1px solid #3a3732;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.det .btn{min-height:52px;padding:0 12px}
-.det .btn-c{background:var(--c-lite);color:var(--ink)}
+.det dd a{text-decoration:none;font-family:var(--disp);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;display:inline-flex;align-items:center;min-height:48px}
+.det .acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:18px}
+.det .btn{min-height:52px;padding:0 10px}
+.det .btn-k{background:var(--on);color:var(--c)}
+.det .btn-l{color:var(--on)}
 @media(max-width:980px){.cg{grid-template-columns:1fr}}
-@media(max-width:520px){.form,.det{padding:20px;border-radius:22px}.f2{grid-template-columns:1fr}}
+@media(max-width:520px){.form,.det,.score{padding:20px}.f2{grid-template-columns:1fr}}
 
-footer{background:#141311;color:#a39c90;padding:36px 0 40px;font-size:.88rem}
-footer .r{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid #2a2825}
-footer b{color:var(--paper)}
+footer{background:var(--ink);color:#a9a9a9;padding:36px 0 40px;font-size:.88rem}
+footer .r{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid #2a2a2a}
+footer b{color:#fff}
 footer a{display:inline-flex;align-items:center;min-height:44px}
 footer .dis{margin:18px 0 0;max-width:74em;font-size:.8rem}
 .mbar{display:none}
-@media(max-width:640px){.mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}.mbar .btn{min-height:52px;box-shadow:0 12px 26px -8px rgba(0,0,0,.4)}.mbar .btn-l{background:var(--paper)}body{padding-bottom:80px}}
-
+@media(max-width:640px){.mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}.mbar .btn{min-height:52px;box-shadow:0 12px 26px -8px rgba(0,0,0,.4)}.mbar .btn-w{border:2px solid var(--ink)}body{padding-bottom:80px}}
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
  *,*::before,*::after{animation:none!important;transition:none!important}
- .js .rv{opacity:1;transform:none}.js .hero h1 .l>span{transform:none}.js .hero h1 em path{stroke-dashoffset:0}
- .prom h3 span{background-size:100% .32em}
+ .js .rv{opacity:1;transform:none}.js .hero h1 .l>span{transform:none}
 }
 </style>
 </head>
@@ -213,7 +204,7 @@ footer .dis{margin:18px 0 0;max-width:74em;font-size:.8rem}
 <div class="concept"><span data-es="Concepto de sitio web por">Website concept by</span> <a href="https://www.lisettecolon.com">Lisette Colon</a>. <span data-es="Una muestra, no el sitio oficial de LI Painting Plus.">A sample, not an official LI Painting Plus site.</span></div>
 
 <header class="hdr"><div class="wrap">
- <a class="brand" href="#top"><span class="sw" aria-hidden="true"></span><span><b>LI Painting Plus</b><small>Uniondale · Long Island</small></span></a>
+ <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span><b>LI Painting Plus</b></a>
  <nav class="nav" id="nav" aria-label="Main"><a href="#top" data-es="Prueba un color">Try a color</a><a href="#services" data-es="Servicios">Services</a><a href="#reviews" data-es="Reseñas">Reviews</a><a href="#contact" data-es="Contacto">Contact</a></nav>
  <div class="lang" role="group" aria-label="Language"><button type="button" aria-pressed="true" data-l="en">EN</button><button type="button" aria-pressed="false" data-l="es">ES</button></div>
  <a class="btn btn-k" href="#contact" data-es="Pide un precio">Get a price</a>
@@ -221,146 +212,102 @@ footer .dis{margin:18px 0 0;max-width:74em;font-size:.8rem}
 </div></header>
 
 <main id="main" tabindex="-1">
-<section class="hero" id="top"><div class="wrap hero-g">
- <div>
-  <h1>
-   <span class="l"><span style="--i:0" data-es="Paredes limpias.">Neat walls.</span></span>
-   <span class="l"><span style="--i:1" data-es="Líneas rectas.">Straight lines.</span></span>
-   <span class="l"><span style="--i:2"><span data-es="Un pintor que">A painter who</span> <em><span data-es="contesta.">picks up.</span><svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M5 13 C 60 6, 130 5, 195 10"/></svg></em></span></span>
-  </h1>
-  <p class="lead rv" style="--d:4" data-es="Pintura de interiores y exteriores para casas en todo el condado de Nassau, de Manny y el equipo de LI Painting Plus en Uniondale. Más de 14 años, precios justos y la casa limpia al terminar.">Interior and exterior painting for homes across Nassau County, from Manny and the LI Painting Plus crew in Uniondale. Over 14 years, fair prices, and a clean house when the job is done.</p>
-  <div class="cta rv" style="--d:5"><a class="btn btn-k" href="#contact" data-es="Pide un precio gratis">Get a free price</a><a class="btn btn-l" href="tel:+15165596366"><span data-es="Llama al">Call</span> (516) 559-6366</a></div>
-  <div class="mini rv" style="--d:6">
-   <div><b>5.0</b><span data-es="26 reseñas en HomeAdvisor">26 HomeAdvisor reviews</span></div>
-   <div><b>14+</b><span data-es="años pintando">years painting</span></div>
-   <div><b>ES</b><span data-es="Hablamos español">Hablamos español</span></div>
+<section class="hero" id="top" style="padding:0">
+ <div class="coat" id="coat"></div>
+ <div class="wrap hg">
+  <div>
+   <h1><span class="l"><span style="--i:0" data-es="Paredes limpias.">Neat walls.</span></span><span class="l"><span style="--i:1" data-es="Líneas rectas.">Straight lines.</span></span><span class="l"><span style="--i:2" data-es="Un pintor que contesta.">A painter who picks up.</span></span></h1>
+   <p class="lead rv" style="--d:4" data-es="Pintura de interiores y exteriores para casas en todo el condado de Nassau, de Manny y el equipo de LI Painting Plus en Uniondale. Elige un color abajo y mira cómo cambia la página.">Interior and exterior painting for homes across Nassau County, from Manny and the LI Painting Plus crew in Uniondale. Pick a color below and watch the whole page change.</p>
+   <div class="cta rv" style="--d:5"><a class="btn btn-k" href="#contact" data-es="Pide un precio gratis">Get a free price</a><a class="btn btn-l" href="tel:+15165596366"><span data-es="Llama al">Call</span>&nbsp;(516) 559-6366</a></div>
   </div>
- </div>
-
- <div class="studio rv" style="--d:2" id="studio">
-  <div class="room">
-   <svg id="roomSvg" viewBox="0 0 800 540" role="img" aria-label="Illustrated living room. The wall shows the paint color you pick below.">
-    <defs>
-     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe0ea"/><stop offset="1" stop-color="#f3efe6"/></linearGradient>
-     <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b48a63"/><stop offset="1" stop-color="#8a6446"/></linearGradient>
-     <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".9"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient>
-     <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".10"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".08"/></linearGradient>
-     <clipPath id="newCoat"><rect id="coatRect" x="0" y="0" width="0" height="540"/></clipPath>
-    </defs>
-    <rect x="0" y="0" width="800" height="54" fill="#f4f1ea"/>
-    <rect id="wallOld" x="0" y="54" width="800" height="340" fill="#e4e0d8"/>
-    <rect id="wallNew" x="0" y="54" width="800" height="340" fill="#e4e0d8" clip-path="url(#newCoat)"/>
-    <rect id="edge" x="-10" y="54" width="7" height="340" fill="#000" opacity="0"/>
-    <rect id="sheenR" x="0" y="54" width="800" height="340" fill="url(#sheen)" opacity="0"/>
-    <rect x="0" y="54" width="800" height="340" fill="url(#shade)"/>
-    <!-- window light on wall -->
-    <polygon points="470,110 660,110 760,394 380,394" fill="#fff" opacity=".09"/>
-    <!-- trim -->
-    <g class="trim" fill="#f6f4ee">
-     <rect x="0" y="50" width="800" height="10"/>
-     <rect x="0" y="380" width="800" height="18"/>
-     <rect x="476" y="104" width="196" height="12"/><rect x="476" y="314" width="196" height="14"/>
-     <rect x="476" y="104" width="12" height="224"/><rect x="660" y="104" width="12" height="224"/>
-     <rect x="568" y="116" width="8" height="198"/><rect x="488" y="210" width="172" height="7"/>
-     <rect x="466" y="326" width="216" height="9"/>
-    </g>
-    <rect x="488" y="116" width="80" height="94" fill="url(#sky)"/><rect x="576" y="116" width="84" height="94" fill="url(#sky)"/>
-    <rect x="488" y="217" width="80" height="97" fill="url(#sky)"/><rect x="576" y="217" width="84" height="97" fill="url(#sky)"/>
-    <path d="M500 300 Q 530 250 560 290 Q 600 240 650 300 Z" fill="#9db58c" opacity=".55"/>
-    <!-- floor -->
-    <rect x="0" y="398" width="800" height="142" fill="url(#floor)"/>
-    <g stroke="#7a573c" stroke-width="1.2" opacity=".45"><line x1="0" y1="430" x2="800" y2="430"/><line x1="0" y1="466" x2="800" y2="466"/><line x1="0" y1="504" x2="800" y2="504"/><line x1="120" y1="398" x2="120" y2="430"/><line x1="420" y1="398" x2="420" y2="430"/><line x1="260" y1="430" x2="260" y2="466"/><line x1="610" y1="430" x2="610" y2="466"/><line x1="90" y1="466" x2="90" y2="504"/><line x1="500" y1="466" x2="500" y2="504"/><line x1="330" y1="504" x2="330" y2="540"/><line x1="700" y1="504" x2="700" y2="540"/></g>
-    <polygon points="440,398 700,398 800,540 420,540" fill="#fff" opacity=".07"/>
-    <!-- rug -->
-    <ellipse cx="270" cy="470" rx="230" ry="36" fill="#e9e1d3"/><ellipse cx="270" cy="470" rx="205" ry="28" fill="none" stroke="#cfc3ae" stroke-width="2"/>
-    <!-- art -->
-    <rect x="160" y="140" width="190" height="130" fill="#fbf8f2" stroke="#2b2925" stroke-width="5"/>
-    <rect x="178" y="158" width="154" height="94" fill="#efe7da"/>
-    <circle cx="232" cy="200" r="26" fill="#c98b62" opacity=".85"/><path d="M178 252 Q 240 196 332 230 L332 252 Z" fill="#7c8f78" opacity=".8"/>
-    <!-- sofa -->
-    <ellipse cx="270" cy="440" rx="200" ry="10" fill="#000" opacity=".12"/>
-    <rect x="95" y="300" width="350" height="70" rx="22" fill="#d9d1c3"/>
-    <rect x="80" y="340" width="380" height="80" rx="24" fill="#e6dfd2"/>
-    <rect x="66" y="320" width="46" height="104" rx="20" fill="#d9d1c3"/><rect x="428" y="320" width="46" height="104" rx="20" fill="#d9d1c3"/>
-    <rect x="118" y="316" width="78" height="56" rx="14" fill="#c9b79a"/><rect x="340" y="316" width="76" height="56" rx="14" fill="#a9b3a0"/>
-    <rect x="100" y="420" width="10" height="18" fill="#5a4636"/><rect x="430" y="420" width="10" height="18" fill="#5a4636"/>
-    <!-- lamp -->
-    <line x1="720" y1="190" x2="720" y2="430" stroke="#2b2925" stroke-width="5"/><ellipse cx="720" cy="432" rx="30" ry="7" fill="#2b2925"/>
-    <path d="M684 190 L 756 190 L 742 140 L 698 140 Z" fill="#f2ead9"/><ellipse cx="720" cy="196" rx="70" ry="22" fill="#fff6dc" opacity=".25"/>
-    <!-- plant -->
-    <path d="M24 430 L 36 368 L 74 368 L 86 430 Z" fill="#c7b59a"/>
-    <g fill="#6e8a5e"><ellipse cx="44" cy="330" rx="12" ry="36" transform="rotate(-20 44 330)"/><ellipse cx="62" cy="320" rx="11" ry="42" transform="rotate(12 62 320)"/><ellipse cx="78" cy="344" rx="10" ry="30" transform="rotate(34 78 344)"/><ellipse cx="34" cy="352" rx="9" ry="26" transform="rotate(-44 34 352)"/></g>
+  <div class="room rv" style="--d:2">
+   <svg viewBox="0 0 640 480" role="img" aria-label="Illustrated room. The wall shows the color you pick.">
+    <rect width="640" height="480" fill="#fff"/>
+    <rect id="wall" x="0" y="0" width="640" height="360" style="fill:var(--c);transition:fill .9s"/>
+    <rect x="0" y="0" width="640" height="360" fill="url(#lg)"/>
+    <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".06"/><stop offset=".6" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#000" stop-opacity=".05"/></linearGradient></defs>
+    <g class="trim" fill="#ffffff"><path d="M380 300 V140 A80 80 0 0 1 540 140 V300 Z" opacity="1"/></g>
+    <path d="M392 296 V142 A68 68 0 0 1 528 142 V296 Z" fill="#dce9ef"/>
+    <path d="M460 74 V296 M392 190 H528" stroke="#fff" stroke-width="8"/>
+    <rect class="trimr" x="0" y="350" width="640" height="14" fill="#fff"/>
+    <rect x="0" y="364" width="640" height="116" fill="#d8c3a4"/>
+    <g stroke="#c6ae8b" stroke-width="2"><line x1="0" y1="400" x2="640" y2="400"/><line x1="0" y1="440" x2="640" y2="440"/><line x1="160" y1="364" x2="160" y2="400"/><line x1="420" y1="400" x2="420" y2="440"/><line x1="260" y1="440" x2="260" y2="480"/></g>
+    <rect x="60" y="250" width="250" height="88" rx="22" fill="#2b2b2b"/><rect x="48" y="290" width="274" height="66" rx="20" fill="#3a3a3a"/>
+    <rect x="80" y="262" width="60" height="44" rx="10" fill="var(--c2)" style="fill:var(--c2);transition:fill .9s"/><rect x="230" y="262" width="60" height="44" rx="10" fill="#f2efe8"/>
+    <rect x="70" y="354" width="10" height="16" fill="#1d1d1d"/><rect x="290" y="354" width="10" height="16" fill="#1d1d1d"/>
+    <rect x="96" y="96" width="170" height="120" fill="#fff" stroke="#1d1d1d" stroke-width="6"/><circle cx="150" cy="150" r="30" style="fill:var(--c4);transition:fill .9s"/><rect x="170" y="130" width="70" height="60" fill="#f0c36b"/>
+    <circle cx="580" cy="320" r="34" fill="#4f7a4a"/><circle cx="560" cy="300" r="22" fill="#6c9862"/><rect x="560" y="330" width="40" height="40" rx="6" fill="#f2efe8"/>
    </svg>
-   <span class="tag"><i aria-hidden="true"></i><span id="tagName">Harbor</span></span>
+   <span class="nm"><i aria-hidden="true"></i><span id="nmT">Sage</span></span>
   </div>
-  <div class="ctrl">
-   <div class="row"><span class="lab" data-es="Prueba un color en la pared">Try a color on the wall</span><span class="cname" id="cname">Harbor<small id="cdesc">Gray blue</small></span></div>
-   <div class="sws" id="sws" role="group" aria-label="Wall colors"></div>
-   <div class="row">
-    <div><span class="lab" data-es="Acabado">Finish</span><div class="seg" id="finish" style="margin-top:6px"><button type="button" aria-pressed="true" data-f="0" data-es="Mate">Matte</button><button type="button" aria-pressed="false" data-f=".07" data-es="Cáscara">Eggshell</button><button type="button" aria-pressed="false" data-f=".14" data-es="Satinado">Satin</button></div></div>
-    <div><span class="lab" data-es="Molduras">Trim</span><div class="seg" id="trim" style="margin-top:6px"><button type="button" aria-pressed="true" data-t="#f6f4ee" data-es="Blanco">White</button><button type="button" aria-pressed="false" data-t="#ece2cf" data-es="Crema">Cream</button><button type="button" aria-pressed="false" data-t="#2b2925" data-es="Negro">Black</button></div></div>
-   </div>
-   <p class="fine" data-es="Ilustración. Los colores en pantalla son aproximados; prueba siempre una muestra real en tu pared.">Illustration. Screen colors are approximate, so always test a real sample on your wall.</p>
-  </div>
+ </div>
+</section>
+<div class="wrap deck">
+ <div class="fan" id="fan" role="group" aria-label="Paint colors"></div>
+ <div class="ctrls">
+  <div class="seg" id="trim"><span data-es="Molduras">Trim</span><button type="button" aria-pressed="true" data-t="#ffffff" data-es="Blanco">White</button><button type="button" aria-pressed="false" data-t="#efe4cf" data-es="Crema">Cream</button><button type="button" aria-pressed="false" data-t="#1d1d1d" data-es="Negro">Black</button></div>
+ </div>
+ <p class="fine" data-es="Ilustración. Los colores en pantalla son aproximados; prueba siempre una muestra real en tu pared.">Illustration. Screen colors are approximate, so always test a real sample on your wall.</p>
+ <div class="facts">
+  <div class="rv"><b>5.0</b><span data-es="26 reseñas en HomeAdvisor">26 HomeAdvisor reviews</span></div>
+  <div class="rv" style="--d:1"><b>14+</b><span data-es="Años pintando en Long Island">Years painting on Long Island</span></div>
+  <div class="rv" style="--d:2"><b>ES</b><span data-es="Hablamos español">Hablamos español</span></div>
+  <div class="rv" style="--d:3"><b>8–5</b><span data-es="Lunes a viernes">Monday to Friday</span></div>
+ </div>
+</div>
+
+<section id="services" tabindex="-1"><div class="wrap">
+ <div class="head">
+  <div class="rv"><p class="tag" data-es="Lo que pintamos">What we paint</p><h2 data-es="Una habitación o la casa entera.">One room or the whole house.</h2></div>
+  <p class="rv" style="--d:1" data-es="Dinos qué necesitas y recibes un precio claro antes de empezar. Estos bloques toman el color que elegiste.">Tell us what needs doing and you get a clear price before any work starts. These blocks take on the color you picked.</p>
+ </div>
+ <div class="blocks">
+  <article class="blk rv"><span class="n">01</span><div><h3 data-es="Interiores">Interiors</h3><p data-es="Salas, dormitorios, cocinas, baños, techos, puertas y molduras. Muebles y pisos cubiertos, y todo limpio al final.">Living rooms, bedrooms, kitchens, baths, ceilings, doors and trim. Furniture and floors covered, and everything cleaned up at the end.</p></div></article>
+  <article class="blk rv" style="--d:1"><span class="n">02</span><div><h3 data-es="Exteriores">Exteriors</h3><p data-es="Revestimiento, molduras y puertas que aguantan el clima de Long Island.">Siding, trim and doors that hold up to Long Island weather.</p></div></article>
+  <article class="blk rv" style="--d:2"><span class="n">03</span><div><h3 data-es="Retoques y arreglos">Touch-ups &amp; fixes</h3><p data-es="Huecos, grietas y manchas reparados antes de pintar.">Holes, cracks and stains fixed before the paint goes on.</p></div></article>
  </div>
 </div></section>
 
-<section class="svc-s" id="services" tabindex="-1"><div class="wrap">
+<section class="prom" id="how" tabindex="-1"><div class="wrap">
  <div class="head">
-  <div class="rv"><p class="eyebrow" data-es="Lo que pintamos">What we paint</p><h2 data-es="Una habitación o la casa entera.">One room or the whole house.</h2></div>
-  <p class="rv" style="--d:1" data-es="Dinos qué necesitas y recibes un precio claro antes de empezar. Las muestras de abajo toman el color que elegiste arriba.">Tell us what needs doing and you get a clear price before any work starts. The paint strips below pick up the color you chose above.</p>
- </div>
- <div class="strips">
-  <article class="strip rv"><div class="chips" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="bd"><span class="n">01</span><h3 data-es="Interiores">Interiors</h3><p data-es="Salas, dormitorios, cocinas, baños, techos, puertas y molduras. Muebles y pisos cubiertos, y todo limpio al final.">Living rooms, bedrooms, kitchens, baths, ceilings, doors and trim. Furniture and floors covered, and everything cleaned up at the end.</p></div></article>
-  <article class="strip rv" style="--d:1"><div class="chips" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="bd"><span class="n">02</span><h3 data-es="Exteriores">Exteriors</h3><p data-es="Revestimiento, molduras y puertas que aguantan el clima de Long Island.">Siding, trim and doors that hold up to Long Island weather.</p></div></article>
-  <article class="strip rv" style="--d:2"><div class="chips" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="bd"><span class="n">03</span><h3 data-es="Retoques y arreglos">Touch-ups &amp; fixes</h3><p data-es="Huecos, grietas y manchas reparados antes de pintar.">Holes, cracks and stains fixed before the paint goes on.</p></div></article>
- </div>
-</div></section>
-
-<section id="how" tabindex="-1"><div class="wrap">
- <div class="head">
-  <div class="rv"><p class="eyebrow" data-es="Cómo trabajamos">How we work</p><h2 data-es="Tres cosas que puedes esperar.">Three things you can count on.</h2></div>
+  <div class="rv"><p class="tag" data-es="Cómo trabajamos">How we work</p><h2 data-es="Tres cosas que puedes esperar.">Three things you can count on.</h2></div>
   <p class="rv" style="--d:1" data-es="Así es cada trabajo, desde un cuarto hasta la casa completa.">Every job runs the same way, from one bedroom to the whole house.</p>
  </div>
- <ol class="prom" id="prom">
-  <li><span class="n">01</span><h3><span data-es="Un precio claro primero.">A clear price first.</span></h3><p data-es="Sabes el costo antes de que se abra una lata de pintura.">You know the cost before a can of paint is opened.</p></li>
-  <li><span class="n">02</span><h3><span data-es="Todo protegido.">Everything protected.</span></h3><p data-es="Muebles y pisos cubiertos antes de empezar.">Furniture and floors covered before the work starts.</p></li>
-  <li><span class="n">03</span><h3><span data-es="Limpio al terminar.">Clean when we leave.</span></h3><p data-es="Líneas rectas, y la casa como la encontramos.">Straight lines, and the house left the way we found it.</p></li>
- </ol>
-</div></section>
-
-<section class="rep" id="reviews" tabindex="-1"><div class="wrap rg">
- <div class="rv">
-  <p class="eyebrow" data-es="Reseñas">Reviews</p>
-  <div class="score">5.0</div>
-  <div class="stars" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg></div>
-  <span data-es="Calificación perfecta en 26 reseñas de HomeAdvisor">A perfect rating across 26 HomeAdvisor reviews</span>
- </div>
- <div class="rv" style="--d:1">
-  <p class="big" data-es="Dueños de casa en todo Nassau califican a LI Painting Plus con 5.0 de 5.">Homeowners across Nassau rate LI Painting Plus a 5.0 out of 5.</p>
-  <div class="facts">
-   <div><b>14+ <span data-es="años">years</span></b><span data-es="pintando en Long Island">painting on Long Island</span></div>
-   <div><b data-es="Lun a vie">Mon to Fri</b><span data-es="8 am a 5 pm">8 am to 5 pm</span></div>
-   <div><b>Uniondale</b><span data-es="sirviendo al condado de Nassau">serving Nassau County</span></div>
-   <div><b data-es="Bilingüe">Bilingual</b><span>English · Español</span></div>
-  </div>
-  <a class="btn btn-k" href="https://www.google.com/search?q=LI+Painting+Plus+Uniondale+HomeAdvisor" target="_blank" rel="noopener" data-es="Lee las reseñas">Read the reviews</a>
+ <div class="pg">
+  <div class="rv"><h3 data-es="Un precio claro primero.">A clear price first.</h3><p data-es="Sabes el costo antes de que se abra una lata de pintura.">You know the cost before a can of paint is opened.</p></div>
+  <div class="rv" style="--d:1"><h3 data-es="Todo protegido.">Everything protected.</h3><p data-es="Muebles y pisos cubiertos antes de empezar.">Furniture and floors covered before the work starts.</p></div>
+  <div class="rv" style="--d:2"><h3 data-es="Limpio al terminar.">Clean when we leave.</h3><p data-es="Líneas rectas, y la casa como la encontramos.">Straight lines, and the house left the way we found it.</p></div>
  </div>
 </div></section>
 
-<section id="contact" tabindex="-1"><div class="wrap">
+<section id="reviews" tabindex="-1"><div class="wrap">
  <div class="head">
-  <div class="rv"><p class="eyebrow" data-es="Contacto">Contact</p><h2 data-es="Cuéntanos del trabajo.">Tell us about the job.</h2></div>
+  <div class="rv"><p class="tag" data-es="Reseñas">Reviews</p><h2 data-es="Calificación perfecta.">A perfect rating.</h2></div>
+  <p class="rv" style="--d:1" data-es="Dueños de casa en todo Nassau califican a LI Painting Plus con 5.0 de 5 en HomeAdvisor.">Homeowners across Nassau rate LI Painting Plus a 5.0 out of 5 on HomeAdvisor.</p>
+ </div>
+ <div class="rv-g">
+  <div class="score rv"><div><b>5.0</b><div class="st" aria-hidden="true">★★★★★</div></div><p data-es="De 26 reseñas en HomeAdvisor">From 26 reviews on HomeAdvisor</p></div>
+  <div class="why">
+   <div class="rv"><b>14+ <span data-es="años" style="color:inherit;font-size:inherit">years</span></b><span data-es="pintando en Long Island">painting on Long Island</span></div>
+   <div class="rv" style="--d:1"><b>Uniondale</b><span data-es="sirviendo al condado de Nassau">serving Nassau County</span></div>
+   <div class="rv"><b data-es="Bilingüe">Bilingual</b><span>English · Español</span></div>
+   <div class="rv" style="--d:1"><b data-es="Lun a vie">Mon to Fri</b><span data-es="8 am a 5 pm">8 am to 5 pm</span></div>
+   <a class="btn btn-k rv" href="https://www.google.com/search?q=LI+Painting+Plus+Uniondale+HomeAdvisor" target="_blank" rel="noopener" data-es="Lee las reseñas">Read the reviews</a>
+  </div>
+ </div>
+</div></section>
+
+<section style="padding-top:0" id="contact" tabindex="-1"><div class="wrap">
+ <div class="head">
+  <div class="rv"><p class="tag" data-es="Contacto">Contact</p><h2 data-es="Cuéntanos del trabajo.">Tell us about the job.</h2></div>
   <p class="rv" style="--d:1" data-es="Llama de lunes a viernes, de 8 am a 5 pm, o deja tus datos y te devolvemos la llamada.">Call Monday to Friday, 8 am to 5 pm, or leave your details and we'll call you back.</p>
  </div>
  <div class="cg">
   <div class="form rv">
    <form id="form" novalidate>
     <div><p class="fld" style="margin:0 0 8px" data-es="¿Qué hay que pintar?">What needs painting?</p>
-     <div class="pick" id="rooms">
-      <button type="button" aria-pressed="false" data-es="Sala">Living room</button><button type="button" aria-pressed="false" data-es="Dormitorios">Bedrooms</button><button type="button" aria-pressed="false" data-es="Cocina">Kitchen</button><button type="button" aria-pressed="false" data-es="Baño">Bathroom</button><button type="button" aria-pressed="false" data-es="Toda la casa">Whole house</button><button type="button" aria-pressed="false" data-es="Exterior">Exterior</button>
-     </div></div>
-    <div class="tried"><i aria-hidden="true"></i><div><b><span data-es="Color que probaste:">Color you tried:</span> <span id="triedName">Harbor</span></b><span data-es="Lo agregamos a tu solicitud. Cámbialo arriba cuando quieras.">We'll add it to your request. Change it above anytime.</span></div></div>
+     <div class="pick" id="rooms"><button type="button" aria-pressed="false" data-es="Sala">Living room</button><button type="button" aria-pressed="false" data-es="Dormitorios">Bedrooms</button><button type="button" aria-pressed="false" data-es="Cocina">Kitchen</button><button type="button" aria-pressed="false" data-es="Baño">Bathroom</button><button type="button" aria-pressed="false" data-es="Toda la casa">Whole house</button><button type="button" aria-pressed="false" data-es="Exterior">Exterior</button></div></div>
+    <div class="tried"><i aria-hidden="true"></i><div><b><span data-es="Color que probaste:">Color you tried:</span> <span id="triedName">Sage</span></b><span data-es="Lo agregamos a tu solicitud. Cámbialo arriba cuando quieras.">We'll add it to your request. Change it above anytime.</span></div></div>
     <div class="f2">
      <label class="fld"><span data-es="Nombre">Name</span><input id="f-name" autocomplete="name" required><span class="err" hidden data-es="Por favor escribe tu nombre.">Please add your name.</span></label>
      <label class="fld"><span data-es="Teléfono">Phone</span><input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" required><span class="err" hidden data-es="Por favor escribe un teléfono.">Please add a phone number.</span></label>
@@ -375,14 +322,12 @@ footer .dis{margin:18px 0 0;max-width:74em;font-size:.8rem}
   <aside class="det rv" style="--d:1">
    <h3>LI Painting Plus</h3>
    <dl>
-    <div><dt data-es="Teléfono">Phone</dt><dd><a class="big" href="tel:+15165596366">(516) 559-6366</a></dd></div>
+    <div><dt data-es="Teléfono">Phone</dt><dd><a href="tel:+15165596366">(516) 559-6366</a></dd></div>
     <div><dt data-es="Dirección">Address</dt><dd>1330 Menard St, Uniondale, NY 11553</dd></div>
     <div><dt data-es="Horario">Hours</dt><dd data-es="Lunes a viernes, 8:00 am a 5:00 pm">Monday to Friday, 8:00 am to 5:00 pm</dd></div>
     <div><dt data-es="Idiomas">Languages</dt><dd>English · Español</dd></div>
-    <div><dt data-es="Zona de servicio">Service area</dt><dd data-es="Casas en todo el condado de Nassau">Homes across Nassau County</dd></div>
-    <div><dt data-es="Calificación">Rating</dt><dd data-es="5.0 en 26 reseñas de HomeAdvisor">5.0 from 26 HomeAdvisor reviews</dd></div>
    </dl>
-   <div class="acts"><a class="btn btn-c" href="tel:+15165596366" data-es="Llamar">Call</a><a class="btn btn-w" href="https://www.google.com/maps/dir/?api=1&amp;destination=1330+Menard+St+Uniondale+NY+11553" target="_blank" rel="noopener" data-es="Cómo llegar">Directions</a></div>
+   <div class="acts"><a class="btn btn-k" href="tel:+15165596366" data-es="Llamar">Call</a><a class="btn btn-l" href="https://www.google.com/maps/dir/?api=1&amp;destination=1330+Menard+St+Uniondale+NY+11553" target="_blank" rel="noopener" data-es="Cómo llegar">Directions</a></div>
   </aside>
  </div>
 </div></section>
@@ -392,7 +337,7 @@ footer .dis{margin:18px 0 0;max-width:74em;font-size:.8rem}
  <div class="r"><span><b>LI Painting Plus</b> · 1330 Menard St, Uniondale, NY 11553 · <span data-es="Lun a vie, 8 am a 5 pm">Mon to Fri, 8 am to 5 pm</span></span><a href="tel:+15165596366">(516) 559-6366</a></div>
  <p class="dis" data-es="Concepto independiente diseñado por Lisette Colon. No está afiliado ni aprobado por LI Painting Plus. Dirección, horario y calificación provienen del perfil público del negocio en HomeAdvisor, revisado en octubre de 2026. La ilustración y el probador de colores son muestras de diseño; la lista de servicios debe confirmarse con el dueño.">Independent website concept designed by Lisette Colon. Not affiliated with or approved by LI Painting Plus. Address, hours and rating are from the business's public HomeAdvisor profile, checked October 2026. The illustration and color tester are design samples; the service list is to be confirmed with the owner.</p>
 </div></footer>
-<div class="mbar"><a class="btn btn-k" href="#contact" data-es="Precio">Get a price</a><a class="btn btn-l" href="tel:+15165596366" data-es="Llamar">Call</a></div>
+<div class="mbar"><a class="btn btn-k" href="#contact" data-es="Precio">Get a price</a><a class="btn btn-w" href="tel:+15165596366" data-es="Llamar">Call</a></div>
 
 <script>
 (function(){
@@ -400,36 +345,27 @@ var d=document,$=function(s,r){return(r||d).querySelector(s)},$$=function(s,r){r
 var RM=matchMedia("(prefers-reduced-motion: reduce)").matches,root=d.documentElement,lang="en";
 var mb=$(".menu"),nav=$("#nav");mb.addEventListener("click",function(){var o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?(lang==="es"?"Cerrar":"Close"):(lang==="es"?"Menú":"Menu")});
 $$("#nav a").forEach(function(a){a.addEventListener("click",function(){nav.classList.remove("open");mb.setAttribute("aria-expanded",false);mb.textContent=lang==="es"?"Menú":"Menu"})});
-
-/* colors */
-var C=[["Harbor","Gray blue","Azul grisáceo","#7f95a6"],["Sage","Soft green","Verde suave","#9caf88"],["Oat","Warm beige","Beige cálido","#d8c6a8"],["Clay","Terracotta","Terracota","#c06e4f"],["Marigold","Bold yellow","Amarillo vivo","#e0a93b"],["Deep teal","Dark green","Verde oscuro","#2f5e5a"],["Blush","Soft pink","Rosa suave","#d9a7a0"],["Midnight","Navy","Azul marino","#2f3a52"]];
-var cur=0,wallOld=$("#wallOld"),wallNew=$("#wallNew"),coat=$("#coatRect"),edge=$("#edge"),anim=null;
-var sws=$("#sws");
-C.forEach(function(c,i){var b=d.createElement("button");b.type="button";b.className="swb";b.style.setProperty("--s",c[3]);b.setAttribute("aria-label",c[0]);b.setAttribute("aria-pressed",i===0);b.addEventListener("click",function(){setColor(i,true)});sws.appendChild(b);});
-function label(){var c=C[cur];$("#cname").firstChild.nodeValue=c[0];$("#cdesc").textContent=lang==="es"?c[2]:c[1];$("#tagName").textContent=c[0];$("#triedName").textContent=c[0];}
-function setColor(i,roll){cur=i;var c=C[i][3];$$(".swb",sws).forEach(function(b,k){b.setAttribute("aria-pressed",k===i)});root.style.setProperty("--c",c);label();
- if(!roll||RM){wallOld.setAttribute("fill",c);wallNew.setAttribute("fill",c);return;}
- if(anim){cancelAnimationFrame(anim);wallOld.setAttribute("fill",wallNew.getAttribute("fill"));}
- wallNew.setAttribute("fill",c);var t0=null,dur=1100;edge.setAttribute("fill",c);
- function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/dur),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2,w=e*800;coat.setAttribute("width",w);edge.setAttribute("x",w-7);edge.setAttribute("opacity",k<1?.35:0);
-  edge.style.filter="brightness(.8)";if(k<1)anim=requestAnimationFrame(step);else{wallOld.setAttribute("fill",c);coat.setAttribute("width",0);anim=null;}}
- coat.setAttribute("width",0);anim=requestAnimationFrame(step);}
-$$("#finish button").forEach(function(b){b.addEventListener("click",function(){$$("#finish button").forEach(function(o){o.setAttribute("aria-pressed",o===b)});$("#sheenR").setAttribute("opacity",b.getAttribute("data-f"));})});
-$$("#trim button").forEach(function(b){b.addEventListener("click",function(){$$("#trim button").forEach(function(o){o.setAttribute("aria-pressed",o===b)});$$(".trim",$("#roomSvg")).forEach(function(g){g.setAttribute("fill",b.getAttribute("data-t"))});})});
-
-/* hero start: primer, then first coat rolls on */
 var hero=$(".hero");setTimeout(function(){hero.classList.add("go")},60);
-root.style.setProperty("--c",C[0][3]);label();
-if(RM){setColor(0,false);}else setTimeout(function(){setColor(0,true)},900);
+
+/* colors: [name, es name, hex, text-on-color] */
+var C=[["Sage","Salvia","#8fa58a","#141414"],["Harbor","Puerto","#7f95a6","#141414"],["Oat","Avena","#dccaa9","#141414"],["Clay","Barro","#c06e4f","#ffffff"],["Marigold","Caléndula","#e3ac3d","#141414"],["Deep teal","Verde azulado","#2f5e5a","#ffffff"],["Blush","Rosado","#e0aaa2","#141414"],["Midnight","Medianoche","#2b3550","#ffffff"]];
+var cur=0,fan=$("#fan"),coat=$("#coat"),n=C.length;
+C.forEach(function(c,i){var b=d.createElement("button");b.type="button";b.className="chip";b.style.setProperty("--s",c[2]);b.style.setProperty("--r",((i-(n-1)/2)*7)+"deg");b.setAttribute("aria-pressed",i===0);b.setAttribute("aria-label",c[0]);b.innerHTML='<i></i><span>'+c[0]+'</span>';b.addEventListener("click",function(){set(i,true)});fan.appendChild(b);});
+function names(){var c=C[cur],nm=lang==="es"?c[1]:c[0];$("#nmT").textContent=nm;$("#triedName").textContent=nm;$$(".chip span",fan).forEach(function(s,i){s.textContent=lang==="es"?C[i][1]:C[i][0]});}
+function set(i,anim){var prev=getComputedStyle(root).getPropertyValue("--c").trim();cur=i;var c=C[i];
+ $$(".chip",fan).forEach(function(b,k){b.setAttribute("aria-pressed",k===i)});
+ hero.style.setProperty("--prev",prev);root.style.setProperty("--c",c[2]);root.style.setProperty("--on",c[3]);
+ if(anim&&!RM){coat.classList.remove("roll");void coat.offsetWidth;coat.classList.add("roll");}names();}
+set(0,false);
+$$("#trim button").forEach(function(b){b.addEventListener("click",function(){$$("#trim button").forEach(function(o){o.setAttribute("aria-pressed",o===b)});var t=b.getAttribute("data-t");$$(".trim,.trimr").forEach(function(g){g.setAttribute("fill",t)});})});
 
 /* reveals */
 var io=("IntersectionObserver" in window&&!RM)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -12% 0px"}):null;
-$$(".rv,#prom li").forEach(function(e){io?io.observe(e):e.classList.add("in")});
+$$(".rv").forEach(function(e){io?io.observe(e):e.classList.add("in")});
 
 /* language */
 $$("[data-es]").forEach(function(e){e.setAttribute("data-en",e.textContent)});
-function setLang(l){lang=l;root.lang=l;$$(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===l)});
- $$("[data-es]").forEach(function(e){e.textContent=e.getAttribute(l==="es"?"data-es":"data-en")});label();}
+function setLang(l){lang=l;root.lang=l;$$(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===l)});$$("[data-es]").forEach(function(e){e.textContent=e.getAttribute(l==="es"?"data-es":"data-en")});names();}
 $$(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.getAttribute("data-l"))})});
 
 /* form (demo) */
