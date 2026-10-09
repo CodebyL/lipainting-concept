@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LI Painting Plus (website concept)</title>
+<meta name="description" content="Website concept for LI Painting Plus of Uniondale: interior and exterior painting across Nassau County. Hablamos español.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --teal:#17423e;--teal-2:#225a54;--ochre:#e3a62e;--cream:#fbf7ef;--sand:#efe6d4;--ink:#16211f;--soft:#4f5b58;--line:#ddd3bf;--brick:#b65a3c;
+ --wall:#cfd8c9;
+ --s1:4px;--s2:8px;--s3:16px;--s4:24px;--s5:32px;--s6:48px;--s7:72px;--s8:104px;
+ --wrap:1160px;--r:14px;
+ --head:"Bricolage Grotesque",system-ui,sans-serif;--body:"Atkinson Hyperlegible",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);font-size:17.5px;line-height:1.6}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--s4)}
+.skip{position:absolute;left:-999px;top:0;background:var(--ochre);color:var(--ink);padding:var(--s2) var(--s3);z-index:99;font-weight:700}
+.skip:focus{left:var(--s3);top:var(--s3)}
+h1,h2,h3{font-family:var(--head);font-weight:800;line-height:1.02;letter-spacing:-.02em;margin:0}
+.label{font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brick);margin:0 0 var(--s3)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);min-height:52px;padding:0 var(--s4);border-radius:12px;font:700 1rem var(--body);text-decoration:none;cursor:pointer;border:2px solid transparent;transition:background .2s,color .2s}
+.btn-ochre{background:var(--ochre);color:var(--ink)}.btn-ochre:hover{background:#f0b745}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal-2)}
+.btn-out{border-color:currentColor;background:transparent;color:inherit}
+
+.concept{background:var(--ochre);color:var(--ink);text-align:center;font-size:.84rem;padding:var(--s2) var(--s3)}
+.concept a{font-weight:700}
+
+header.site{background:var(--teal);color:#fff;position:sticky;top:0;z-index:40}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);min-height:74px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:40px;height:40px}
+.logo b{font-family:var(--head);font-weight:800;font-size:1.3rem;letter-spacing:-.01em}
+.logo b span{color:var(--ochre)}
+nav.main ul{display:flex;gap:var(--s4);list-style:none;margin:0;padding:0}
+nav.main a{text-decoration:none;font-weight:700;padding:var(--s2) 0;border-bottom:2px solid transparent}
+nav.main a:hover{border-color:var(--ochre)}
+.hd-right{display:flex;gap:var(--s2);align-items:center}
+.lang{display:inline-flex;border:2px solid rgba(255,255,255,.4);border-radius:10px;overflow:hidden}
+.lang button{background:none;border:0;color:#fff;font:700 .9rem var(--body);min-height:42px;min-width:46px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ochre);color:var(--ink)}
+.menu-btn{display:none;min-height:44px;min-width:48px;padding:0 var(--s3);border-radius:10px;border:2px solid rgba(255,255,255,.4);background:none;color:#fff;font:700 .9rem var(--body);cursor:pointer}
+@media (max-width:900px){
+ nav.main{display:none;position:absolute;left:0;right:0;top:100%;background:var(--teal)}
+ nav.main.open{display:block}
+ nav.main ul{flex-direction:column;gap:0;padding:var(--s2) var(--s4) var(--s4)}
+ nav.main a{display:block;padding:var(--s3) 0;border-bottom:1px solid rgba(255,255,255,.15)}
+ .menu-btn{display:inline-flex;align-items:center}
+ .hd .call-top{display:none}
+}
+@media (max-width:380px){.logo b{font-size:1.1rem}.logo svg{width:32px;height:32px}}
+
+/* hero */
+.hero{background:var(--teal);color:#fff;padding:var(--s6) 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);align-items:end}
+.hero-copy{padding-bottom:var(--s7)}
+.hero h1{font-size:clamp(2.6rem,6vw,4.8rem)}
+.hero h1 .hl{color:var(--ochre)}
+.hero p.lead{font-size:1.15rem;color:#d5e3df;max-width:30em;margin:var(--s4) 0 var(--s5)}
+.cta{display:flex;flex-wrap:wrap;gap:var(--s3)}
+.hablamos{display:inline-flex;align-items:center;gap:var(--s2);margin-top:var(--s5);font-weight:700;color:#fff;background:rgba(255,255,255,.08);border-radius:10px;padding:var(--s2) var(--s3)}
+.hablamos i{width:10px;height:10px;border-radius:50%;background:var(--ochre)}
+.room{position:relative;align-self:end}
+.room svg{width:100%;height:auto}
+#wallNew{transition:fill .5s ease}
+.roll{animation:roll 5.5s ease-in-out infinite}
+@keyframes roll{0%,100%{transform:translateY(0)}50%{transform:translateY(150px)}}
+.reveal{animation:reveal 5.5s ease-in-out infinite}
+@keyframes reveal{0%,100%{transform:scaleY(.12)}50%{transform:scaleY(1)}}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-copy{padding-bottom:0}.room{max-width:520px;margin:0 auto;width:100%}}
+
+/* proof */
+.proof{background:var(--sand)}
+.proof .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.proof div.p{padding:var(--s5) var(--s4);border-left:1px solid var(--line)}
+.proof div.p:first-child{border-left:0;padding-left:0}
+.proof b{display:block;font-family:var(--head);font-size:2.4rem;font-weight:800;line-height:1;color:var(--teal)}
+.proof span{color:var(--soft);font-size:.95rem}
+@media (max-width:700px){.proof .wrap{grid-template-columns:1fr}.proof div.p{border-left:0;padding-left:0;border-top:1px solid var(--line)}.proof div.p:first-child{border-top:0}}
+
+section{padding:var(--s8) 0}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);align-items:end;margin-bottom:var(--s6)}
+.head h2{font-size:clamp(2.1rem,4.4vw,3.5rem);color:var(--teal)}
+.head p{margin:0;color:var(--soft);font-size:1.08rem}
+.head .label{color:var(--brick)}
+@media (max-width:820px){.head{grid-template-columns:1fr;gap:var(--s3)}section{padding:var(--s7) 0}}
+
+/* rooms list */
+.rooms{display:grid;grid-template-columns:1.2fr 1fr;gap:var(--s4)}
+.rcard{border-radius:var(--r);padding:var(--s5);position:relative;overflow:hidden;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end}
+.rcard h3{font-size:1.8rem;margin-bottom:var(--s2)}
+.rcard p{margin:0;max-width:30em}
+.rcard .stroke{position:absolute;top:var(--s4);right:var(--s4);width:120px;height:44px;border-radius:22px;opacity:.9}
+.r1{grid-row:span 2;background:var(--teal);color:#fff;min-height:460px}
+.r1 p{color:#d5e3df}
+.r1 .stroke{background:var(--ochre);width:180px}
+.r2{background:var(--ochre)}
+.r2 .stroke{background:var(--teal)}
+.r3{background:#fff;border:2px solid var(--line)}
+.r3 .stroke{background:var(--brick)}
+@media (max-width:820px){.rooms{grid-template-columns:1fr}.r1{grid-row:auto;min-height:280px}}
+
+/* visualizer */
+.viz{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.viz-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s6);align-items:center}
+.viz-frame{background:var(--sand);border-radius:var(--r);padding:var(--s4)}
+.viz-frame svg{width:100%;height:auto;border-radius:8px}
+#vWall{transition:fill .45s ease}
+.sw-list{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin:var(--s4) 0}
+.sw{border:2px solid var(--line);background:#fff;border-radius:12px;padding:var(--s2);cursor:pointer;text-align:left;font:700 .9rem var(--body);color:var(--ink);min-height:48px}
+.sw i{display:block;height:52px;border-radius:8px;margin-bottom:var(--s2)}
+.sw small{display:block;font-weight:400;color:var(--soft);font-size:.78rem}
+.sw[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink) inset}
+.demo-note{font-size:.86rem;color:var(--soft);margin:var(--s3) 0 0}
+@media (max-width:860px){.viz-grid{grid-template-columns:1fr}}
+@media (max-width:420px){.sw-list{grid-template-columns:repeat(2,1fr)}}
+
+/* reviews */
+.reviews .grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+blockquote{margin:0;background:var(--sand);border-radius:var(--r);padding:var(--s5);position:relative}
+blockquote p{font-family:var(--head);font-weight:600;font-size:1.55rem;line-height:1.25;margin:0 0 var(--s4);color:var(--teal);letter-spacing:-.01em}
+blockquote footer{font-size:.95rem;color:var(--soft)}
+blockquote footer b{color:var(--ink)}
+.stars{color:#a86f00;letter-spacing:2px;font-size:1rem;margin-bottom:var(--s3)}
+.rv-note{margin-top:var(--s4);color:var(--soft);font-size:.95rem}
+@media (max-width:760px){.reviews .grid{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--teal);color:#fff}
+.contact .head h2{color:#fff}
+.contact .head p{color:#d5e3df}
+.contact .label{color:var(--ochre)}
+.c-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--s6)}
+.info{list-style:none;padding:0;margin:0}
+.info li{padding:var(--s4) 0;border-top:1px solid rgba(255,255,255,.18)}
+.info b{display:block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ochre);margin-bottom:var(--s1)}
+.info a{font-family:var(--head);font-weight:800;font-size:1.8rem;text-decoration:none}
+form.card{background:var(--cream);color:var(--ink);border-radius:var(--r);padding:var(--s5)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.field{margin-bottom:var(--s3)}
+label.l{display:block;font-weight:700;font-size:.92rem;margin-bottom:var(--s1)}
+input,select,textarea{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);min-height:50px}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--ochre);outline-offset:1px;border-color:var(--teal)}
+textarea{min-height:110px;resize:vertical}
+.err{color:#a31d14;font-size:.86rem;font-weight:700;margin-top:4px}
+.ok{background:var(--cream);color:var(--ink);border-radius:var(--r);padding:var(--s6) var(--s5)}
+.ok h3{font-size:2.2rem;color:var(--teal);margin-bottom:var(--s3)}
+@media (max-width:860px){.c-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.row2{grid-template-columns:1fr}form.card{padding:var(--s4)}}
+
+.site-foot{background:#0f2e2b;color:#bcd0cb;padding:var(--s6) 0 var(--s5);font-size:.92rem}
+.site-foot .ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s4);padding-bottom:var(--s4);border-bottom:1px solid rgba(255,255,255,.12)}
+.site-foot b{color:#fff;font-family:var(--head);font-size:1.15rem}
+.site-foot a{color:#fff}
+.dis{font-size:.8rem;color:#8fa8a2;margin-top:var(--s4);max-width:70em}
+.mobile-call{display:none}
+@media (max-width:640px){.mobile-call{display:flex;position:fixed;left:var(--s3);right:var(--s3);bottom:var(--s3);z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.3)}body{padding-bottom:84px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-es="Saltar al contenido">Skip to content</a>
+<div class="concept"><span data-es="Concepto de sitio web por">Website concept by</span> <a href="https://www.lisettecolon.com">Lisette Colon</a>. <span data-es="Es una muestra, no el sitio oficial de LI Painting Plus.">A sample, not an official LI Painting Plus site.</span></div>
+
+<header class="site">
+ <div class="wrap hd">
+  <a class="logo" href="#top" aria-label="LI Painting Plus, home">
+   <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="6" width="26" height="12" rx="3" fill="#e3a62e"/><rect x="30" y="10" width="5" height="4" fill="#fff"/><rect x="33" y="10" width="2.5" height="16" fill="#fff"/><rect x="17" y="24" width="18.5" height="2.5" fill="#fff"/><rect x="16" y="24" width="3" height="13" rx="1.5" fill="#fff"/></svg>
+   <b>LI Painting <span>Plus</span></b>
+  </a>
+  <nav class="main" id="nav" aria-label="Main">
+   <ul>
+    <li><a href="#rooms" data-es="Servicios">Services</a></li>
+    <li><a href="#colors" data-es="Colores">Try a color</a></li>
+    <li><a href="#reviews" data-es="Reseñas">Reviews</a></li>
+    <li><a href="#contact" data-es="Contacto">Contact</a></li>
+   </ul>
+  </nav>
+  <div class="hd-right">
+   <div class="lang" role="group" aria-label="Language / Idioma"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
+   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-es="Menú">Menu</button>
+  </div>
+ </div>
+</header>
+
+<main id="main">
+<div class="hero" id="top">
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <p class="label" style="color:var(--ochre)" data-es="Uniondale, Long Island">Uniondale, Long Island</p>
+   <h1 data-es-html="Paredes limpias, líneas rectas y un pintor que <span class='hl'>contesta el teléfono.</span>">Neat walls, straight lines, and a painter who <span class="hl">picks up the phone.</span></h1>
+   <p class="lead" data-es="Pintura interior y exterior para casas de Nassau County. Más de 14 años de experiencia, precios justos y un equipo que deja todo limpio.">Interior and exterior painting for homes across Nassau County. Over 14 years in business, fair prices, and a crew that leaves the place clean.</p>
+   <div class="cta">
+    <a class="btn btn-ochre" href="#contact" data-es="Pedir un presupuesto">Get a price</a>
+    <a class="btn btn-out" href="tel:+15165596366" data-es="Llamar (516) 559-6366">Call (516) 559-6366</a>
+   </div>
+   <div class="hablamos"><i aria-hidden="true"></i><span>Hablamos español</span></div>
+  </div>
+  <div class="room" aria-hidden="true">
+   <svg viewBox="0 0 520 440">
+    <rect x="0" y="0" width="520" height="440" fill="#1f504b"/>
+    <rect x="30" y="30" width="460" height="360" fill="#d9d2c3"/>
+    <g style="transform-origin:30px 30px" class="reveal"><rect id="wallNew" x="30" y="30" width="200" height="360" fill="#e3a62e"/></g>
+    <rect x="290" y="80" width="150" height="170" rx="4" fill="#bcd6e0"/>
+    <rect x="290" y="80" width="150" height="170" rx="4" fill="none" stroke="#fff" stroke-width="10"/>
+    <line x1="365" y1="80" x2="365" y2="250" stroke="#fff" stroke-width="6"/>
+    <line x1="290" y1="165" x2="440" y2="165" stroke="#fff" stroke-width="6"/>
+    <rect x="30" y="372" width="460" height="18" fill="#fff"/>
+    <rect x="0" y="390" width="520" height="50" fill="#9c6b45"/>
+    <g class="roll"><rect x="96" y="54" width="92" height="30" rx="10" fill="#f6efe1"/><rect x="96" y="76" width="92" height="8" fill="#e3a62e"/><rect x="138" y="84" width="6" height="40" fill="#2c2c2c"/><rect x="132" y="120" width="18" height="70" rx="6" fill="#b65a3c"/></g>
+    <g transform="translate(330 270)"><rect x="0" y="0" width="70" height="110" fill="none" stroke="#6b4a2f" stroke-width="7"/><line x1="0" y1="28" x2="70" y2="28" stroke="#6b4a2f" stroke-width="6"/><line x1="0" y1="58" x2="70" y2="58" stroke="#6b4a2f" stroke-width="6"/><line x1="0" y1="88" x2="70" y2="88" stroke="#6b4a2f" stroke-width="6"/></g>
+    <g transform="translate(250 330)"><path d="M0 10 h46 l-6 50 h-34z" fill="#cfd8dc"/><rect x="-2" y="4" width="50" height="10" rx="3" fill="#90a4ae"/><rect x="4" y="22" width="38" height="16" fill="#e3a62e"/></g>
+   </svg>
+  </div>
+ </div>
+</div>
+
+<div class="proof">
+ <div class="wrap">
+  <div class="p"><b>5.0</b><span data-es="De 26 reseñas en HomeAdvisor">From 26 HomeAdvisor reviews</span></div>
+  <div class="p"><b>14+</b><span data-es="Años pintando en Long Island">Years painting on Long Island</span></div>
+  <div class="p"><b>8 to 5</b><span data-es="Lunes a viernes, 8 am a 5 pm">Monday to Friday, 8 am to 5 pm</span></div>
+ </div>
+</div>
+
+<section id="rooms">
+ <div class="wrap">
+  <div class="head">
+   <div><p class="label" data-es="Lo que pintamos">What we paint</p><h2 data-es="De un cuarto a la casa entera.">One room or the whole house.</h2></div>
+   <p data-es="Cuéntenos qué necesita y le damos un precio claro antes de empezar.">Tell us what needs doing and you get a clear price before any work starts.</p>
+  </div>
+  <div class="rooms">
+   <article class="rcard r1"><span class="stroke" aria-hidden="true"></span><h3 data-es="Interiores">Interiors</h3><p data-es="Salas, cuartos, cocinas, baños, techos, puertas y molduras. Muebles y pisos cubiertos, y todo limpio al terminar.">Living rooms, bedrooms, kitchens, baths, ceilings, doors and trim. Furniture and floors covered, and everything cleaned up at the end.</p></article>
+   <article class="rcard r2"><span class="stroke" aria-hidden="true"></span><h3 data-es="Exteriores">Exteriors</h3><p data-es="Fachadas, molduras y puertas que aguantan el clima de Long Island.">Siding, trim and doors that hold up to Long Island weather.</p></article>
+   <article class="rcard r3"><span class="stroke" aria-hidden="true"></span><h3 data-es="Retoques y reparaciones">Touch-ups &amp; fixes</h3><p data-es="Huecos, grietas y manchas arreglados antes de pintar.">Holes, cracks and stains fixed before the paint goes on.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="viz" id="colors">
+ <div class="wrap viz-grid">
+  <div class="viz-frame" aria-hidden="true">
+   <svg viewBox="0 0 560 360">
+    <rect id="vWall" x="0" y="0" width="560" height="300" fill="#cfd8c9"/>
+    <rect x="0" y="292" width="560" height="10" fill="#fff"/>
+    <rect x="0" y="302" width="560" height="58" fill="#b48a62"/>
+    <rect x="60" y="70" width="150" height="110" fill="#fff"/><rect x="70" y="80" width="130" height="90" fill="#e9dfcf"/>
+    <path d="M80 160 l40-50 30 34 20-22 30 38z" fill="#7a9a86"/><circle cx="170" cy="105" r="10" fill="#e3a62e"/>
+    <rect x="290" y="190" width="220" height="70" rx="12" fill="#2f3b3a"/><rect x="280" y="170" width="240" height="40" rx="14" fill="#3b4a48"/>
+    <rect x="300" y="260" width="12" height="34" fill="#222"/><rect x="488" y="260" width="12" height="34" fill="#222"/>
+    <rect x="330" y="160" width="60" height="40" rx="10" fill="#e3a62e"/><rect x="410" y="160" width="60" height="40" rx="10" fill="#f3ead8"/>
+    <rect x="530" y="80" width="6" height="212" fill="#8a7a66"/><path d="M505 80 h56 l-12 40 h-32z" fill="#f3ead8"/>
+   </svg>
+  </div>
+  <div>
+   <p class="label" data-es="Pruebe un color">Try a color</p>
+   <h2 style="font-size:clamp(2rem,4vw,3.1rem);color:var(--teal)" data-es="¿No sabe qué color escoger? Pruébelo aquí.">Stuck on a color? Try it here first.</h2>
+   <div class="sw-list" id="sw">
+    <button class="sw" type="button" data-c="#cfd8c9" aria-pressed="true"><i style="background:#cfd8c9"></i>Sage<small data-es="Verde suave">Soft green</small></button>
+    <button class="sw" type="button" data-c="#e8dcc6" aria-pressed="false"><i style="background:#e8dcc6"></i>Oat<small data-es="Beige cálido">Warm beige</small></button>
+    <button class="sw" type="button" data-c="#b9cbd8" aria-pressed="false"><i style="background:#b9cbd8"></i>Harbor<small data-es="Azul gris">Gray blue</small></button>
+    <button class="sw" type="button" data-c="#e3a62e" aria-pressed="false"><i style="background:#e3a62e"></i>Marigold<small data-es="Amarillo fuerte">Bold yellow</small></button>
+    <button class="sw" type="button" data-c="#c98a72" aria-pressed="false"><i style="background:#c98a72"></i>Clay<small data-es="Terracota">Terracotta</small></button>
+    <button class="sw" type="button" data-c="#2f5450" aria-pressed="false"><i style="background:#2f5450"></i>Deep teal<small data-es="Verde oscuro">Dark green</small></button>
+   </div>
+   <p class="demo-note" data-es="Muestra de diseño. Los colores son aproximados; confirme con muestras reales en su pared.">Design sample. Screen colors are approximate, so always test a real sample on your wall.</p>
+  </div>
+ </div>
+</section>
+
+<section class="reviews" id="reviews">
+ <div class="wrap">
+  <div class="head">
+   <div><p class="label" data-es="Reseñas">Reviews</p><h2 data-es="Lo que dicen los clientes.">What customers say.</h2></div>
+   <p data-es="Reseñas reales de HomeAdvisor, donde LI Painting Plus tiene 5.0 estrellas.">Real reviews from HomeAdvisor, where LI Painting Plus holds a perfect 5.0.</p>
+  </div>
+  <div class="grid">
+   <blockquote><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>&ldquo;Manny did a great job. Was very neat and would recommend him.&rdquo;</p><footer><b>Natalie N.</b> &middot; HomeAdvisor, June 2026</footer></blockquote>
+   <blockquote><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>&ldquo;...gave a fair price and was super prompt.&rdquo;</p><footer><b>Elisa M.</b> &middot; HomeAdvisor, December 2025</footer></blockquote>
+  </div>
+  <p class="rv-note" data-es="Las reseñas aparecen en inglés, tal como se escribieron.">Reviews are shown as written on HomeAdvisor.</p>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="wrap">
+  <div class="head">
+   <div><p class="label" data-es="Contacto">Contact</p><h2 data-es="Cuéntenos del trabajo.">Tell us about the job.</h2></div>
+   <p data-es="Llame de lunes a viernes, de 8 am a 5 pm, o deje sus datos y le devolvemos la llamada.">Call Monday to Friday, 8 am to 5 pm, or leave your details and we will call you back.</p>
+  </div>
+  <div class="c-grid">
+   <ul class="info">
+    <li><b data-es="Teléfono">Phone</b><a href="tel:+15165596366">(516) 559-6366</a></li>
+    <li><b data-es="Dirección">Address</b>1330 Menard St, Uniondale, NY 11553</li>
+    <li><b data-es="Horario">Hours</b><span data-es="Lunes a viernes, 8:00 am a 5:00 pm">Monday to Friday, 8:00 am to 5:00 pm</span></li>
+    <li><b data-es="Idiomas">Languages</b>English &middot; Español</li>
+   </ul>
+   <div>
+    <form class="card" id="ctForm" data-demo="ctOk" novalidate>
+     <div class="row2">
+      <div class="field"><label class="l" for="c-name" data-es="Nombre">Name</label><input id="c-name" autocomplete="name" required><div class="err" hidden data-es="Escriba su nombre.">Please add your name.</div></div>
+      <div class="field"><label class="l" for="c-phone" data-es="Teléfono">Phone</label><input id="c-phone" type="tel" autocomplete="tel" required><div class="err" hidden data-es="Escriba un número de teléfono.">Please add a phone number.</div></div>
+     </div>
+     <div class="row2">
+      <div class="field"><label class="l" for="c-town" data-es="Pueblo">Town</label><input id="c-town" autocomplete="address-level2" required><div class="err" hidden data-es="Escriba su pueblo.">Please add your town.</div></div>
+      <div class="field"><label class="l" for="c-type" data-es="Tipo de trabajo">Type of job</label>
+       <select id="c-type"><option data-es="Interior">Interior</option><option data-es="Exterior">Exterior</option><option data-es="Los dos">Both</option><option data-es="No estoy seguro">Not sure yet</option></select></div>
+     </div>
+     <div class="field"><label class="l" for="c-msg" data-es="¿Qué necesita pintar?">What needs painting?</label><textarea id="c-msg"></textarea></div>
+     <button class="btn btn-teal" type="submit" style="width:100%" data-es="Enviar">Send</button>
+     <p class="demo-note" data-es="Formulario de muestra. Este es un concepto de sitio web; nada se envía ni se guarda."><b>Demo form.</b> This is a website concept. Nothing is sent or saved.</p>
+    </form>
+    <div class="ok" id="ctOk" hidden tabindex="-1">
+     <h3 data-es="Demo completa.">Demo complete.</h3>
+     <p data-es="En el sitio real, este mensaje le llegaría directamente a LI Painting Plus. Nada se envió ni se guardó.">On the real site this message would go straight to LI Painting Plus. Nothing was sent or saved.</p>
+     <button class="btn btn-out" type="button" data-again="ctForm" style="color:var(--teal)" data-es="Empezar de nuevo">Start over</button>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="site-foot">
+ <div class="wrap">
+  <div class="ft">
+   <div><b>LI Painting Plus</b><p style="margin:var(--s1) 0 0">1330 Menard St, Uniondale, NY 11553</p></div>
+   <div><p style="margin:0"><a href="tel:+15165596366">(516) 559-6366</a></p><p style="margin:var(--s1) 0 0" data-es="Lun a vie, 8 am a 5 pm">Mon to Fri, 8 am to 5 pm</p></div>
+  </div>
+  <p class="dis" data-es="Concepto de sitio web independiente diseñado por Lisette Colon. No está afiliado ni aprobado por LI Painting Plus. Dirección, horario, calificación y reseñas tomados de HomeAdvisor, revisados en octubre de 2026. Las ilustraciones y el probador de colores son muestras de diseño.">Independent website concept designed by Lisette Colon. Not affiliated with or approved by LI Painting Plus. Address, hours, rating and reviews are from the business's public HomeAdvisor profile, checked October 2026. The illustrations and color tester are design samples; the service list is to be confirmed with the owner.</p>
+ </div>
+</footer>
+<a class="btn btn-ochre mobile-call" href="tel:+15165596366" data-es="Llamar (516) 559-6366">Call (516) 559-6366</a>
+
+<script>
+(function(){
+var d=document,$$=function(s,r){return Array.prototype.slice.call((r||d).querySelectorAll(s))};
+var mb=d.querySelector(".menu-btn"),nav=d.getElementById("nav"),lang="en";
+function menuLabel(o){return o?(lang==="es"?"Cerrar":"Close"):(lang==="es"?"Menú":"Menu");}
+mb.addEventListener("click",function(){var o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=menuLabel(o);});
+$$("#nav a").forEach(function(a){a.addEventListener("click",function(){nav.classList.remove("open");mb.setAttribute("aria-expanded",false);mb.textContent=menuLabel(false);});});
+/* language toggle */
+$$("[data-es]").forEach(function(e){e.setAttribute("data-en",e.innerHTML)});
+$$("[data-es-html]").forEach(function(e){e.setAttribute("data-en-html",e.innerHTML)});
+function setLang(l){lang=l;d.documentElement.lang=l;
+ $$("[data-es]").forEach(function(e){if(l==="es")e.textContent=e.getAttribute("data-es");else e.innerHTML=e.getAttribute("data-en");});
+ $$("[data-es-html]").forEach(function(e){e.innerHTML=e.getAttribute(l==="es"?"data-es-html":"data-en-html");});
+ $$(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-lang")===l)});
+ mb.textContent=menuLabel(nav.classList.contains("open"));}
+$$(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.getAttribute("data-lang"))})});
+/* color tester */
+var wall=d.getElementById("vWall");
+$$("#sw .sw").forEach(function(b){b.addEventListener("click",function(){wall.setAttribute("fill",b.getAttribute("data-c"));$$("#sw .sw").forEach(function(x){x.setAttribute("aria-pressed",x===b)});});});
+/* demo form */
+$$("form[data-demo]").forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault();var bad=null;$$("[required]",f).forEach(function(i){var ok=!!i.value.trim();var er=i.parentNode.querySelector(".err");if(er)er.hidden=ok;i.setAttribute("aria-invalid",!ok);if(!ok&&!bad)bad=i;});if(bad){bad.focus();return;}var ok=d.getElementById(f.getAttribute("data-demo"));f.hidden=true;ok.hidden=false;ok.focus();});});
+$$("[data-again]").forEach(function(b){b.addEventListener("click",function(){var f=d.getElementById(b.getAttribute("data-again"));f.reset();b.closest(".ok").hidden=true;f.hidden=false;f.querySelector("input").focus();});});
+})();
+</script>
+</body>
+</html>
